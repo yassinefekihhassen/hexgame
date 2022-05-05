@@ -7,7 +7,7 @@ public class ordi {
 
    // choisir la taille de l'arene
     public ordi(){
-        // le 1 de plus c'est pour la colonne et la ligne des chiffres 
+     
         this.taille =Integer.valueOf(JOptionPane.showInputDialog("choisissez la taille de la arene ?"))+1;
         while (this.taille <= 2) {
             this.taille =Integer.valueOf(JOptionPane.showInputDialog("Merci de choisir une taille plus grande que 1 ?"))+1;
@@ -18,7 +18,7 @@ public class ordi {
         
     }
 
-    // chenger le tour entre les deux joueurs
+    // changer le tour entre les deux joueurs
     public void tour() {
         int temp =1 ;
         while (!gagnant()) {
@@ -28,20 +28,20 @@ public class ordi {
             if (temp % 2 != 0) joueur(arene, tab_cache, 1);
             else joueur(arene, tab_cache, 2);
             temp++;
-            // pour effacer la console j'ai trouvé la commande ici : https://www.delftstack.com/howto/java/java-clear-console/
+            // Commande trouver ici : https://www.delftstack.com/howto/java/java-clear-console/
             System.out.print("\033[H\033[2J");
         }
         affichage(arene);
         termine(temp);
     }
 
-    // swap pour demander à l'utilisateur s'il préfère échanger
+    // swap pour demander à l'utilisateur s'il préfère swap
     public static void swap(int arene[][], int tab_cache[][]) {
         int temp = Integer.valueOf(JOptionPane.showInputDialog("J2: vous voulez échanger le cellule avec J1? (oui/0,non/1)"));
         if (temp == 0) chSwap(arene, tab_cache);
     }
     
-    // on fait un échange entre les cellule après de finir le premiere tour,si le joueur 2 veut
+    // on fait un échange entre les cellules après de finir le premier tour
     public static void chSwap(int arene[][], int tab_cache[][]) {
         for (int i = 1; i < tab_cache.length; i++) {
             for (int j = 1; j < tab_cache.length; j++) {
@@ -60,7 +60,7 @@ public class ordi {
         affichage(arene);
     }
 
-    // un joueur human vs CPU
+    // un joueur humain vs ordi
     public void joueur(int arene[][], int tab_cache[][], int j) {
         int x;
         int y;
@@ -73,8 +73,8 @@ public class ordi {
         }
        
         y = Random(1,this.taille);
-        // on envoie les cordonees au fonction vide pour tester si la cellule est disponible
-        // si la cellule n'est pas disponible, on re-demande a l'utilisateur
+        // on envoie les coordonnées à la fonction vide pour tester si la cellule est disponible
+        // si la cellule n'est pas disponible, on redemande à l'utilisateur
         while (!vide(tab_cache, x, y)) {
             x = Random(1, this.taille);
             try {
@@ -116,7 +116,7 @@ public class ordi {
         }
     }
 
-    // test si le cellule est disponible
+    // test si la cellule est disponible
     public static boolean vide(int tab_cache[][],int x , int y ) {
         if (x < tab_cache.length
             && x > 0
@@ -127,7 +127,7 @@ public class ordi {
     } else return false;
     }
 
-    // initialiser les valeurs de chaque cellule de tab_chache avec joueur 1 = 4 et joueur 2 = 5
+    // initialiser les valeurs de chaque cellule de tab_cache avec joueur 1 = 4 et joueur 2 = 5
     public static int valeur(int tab_cache[][], int x, int y, int j) {
         if (x == 1 && j == 1) tab_cache[x][y] = 4;
         else if (y == 1 && j == 2) tab_cache[x][y] = 5;
@@ -135,7 +135,7 @@ public class ordi {
         return 0;
     }
 
-    //partie test le voisin
+    // partie test le voisin
     static boolean test4_5(int tab_cache[][], int t) {
         for (int i = 1; i < tab_cache.length; i++) {
             for (int j = 1; j < tab_cache.length; j++) { 
@@ -181,7 +181,7 @@ public class ordi {
         return false;
     }
 
-    //on affiche l'arene
+    // on affiche l'arene
     public static void affichage(int arene[][]) {
         for (int i = 0; i < arene.length; i++) {
             for (int j = 0; j < arene.length; j++) {
@@ -198,7 +198,7 @@ public class ordi {
             System.out.println();
         }
     }
-    // je l'ai coupé sinon la méthode affichage va étre trés long et 
+    // je l'ai coupé sinon la méthode affichage va être très long  
     public static void bordGouche(int temp) {
         for (int i = 0; i < temp - 1; i++) {
             System.out.print(" ");

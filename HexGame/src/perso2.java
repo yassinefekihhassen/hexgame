@@ -9,7 +9,7 @@ public class perso2 {
 
    // choisir la taille de l'arene
     public perso2(){
-        // le 1 de plus c'est pour le colone et la ligne des chiffres 
+       
         this.taille =Integer.valueOf(JOptionPane.showInputDialog("choisissez la taille de la arene ?"))+1;
         while (this.taille <= 2) {
             this.taille =Integer.valueOf(JOptionPane.showInputDialog("Merci de choisir une taille plus grande que 1 ?"))+1;
@@ -20,7 +20,7 @@ public class perso2 {
         
     }
 
-    // chenger le tour entre les deux joueurs
+    // changer le tour entre les deux joueurs
     public void tour() {
         int temp =1 ;
         while (!gagnant()) {
@@ -47,7 +47,7 @@ public class perso2 {
         if (temp == 0) chSwap(arene, tab_cache);
     }
     
-    // on fait un échange entre les cellule après de finir le premiere tour,si le joueur 2 veut
+    // on fait un échange entre les cellules après de finir le premier tour
     public static void chSwap(int arene[][], int tab_cache[][]) {
         for (int i = 1; i < tab_cache.length; i++) {
             for (int j = 1; j < tab_cache.length; j++) {
@@ -66,15 +66,15 @@ public class perso2 {
         affichage(arene);
     }
 
-    // un joueur human vs CPU
+    // un joueur human vs ordi
     public void joueur(int arene[][], int tab_cache[][], int j) {
         int x;
         int y;
         
             x = Integer.valueOf(JOptionPane.showInputDialog("j" + j + ": cordonnee X"));
             y = Integer.valueOf(JOptionPane.showInputDialog("j" + j + ": cordonnee Y"));
-            // on envoie les cordonees au fonction vide pour tester si la cellule est disponible
-            // si la cellule n'est pas disponible, on re-demande a l'utilisateur
+            // on envoie les coordonnées à la fonction vide pour tester si la cellule est disponible
+            // si la cellule n'est pas disponible, on redemande à l'utilisateur
             while (!vide(tab_cache, x, y)) {
                 x = Integer.valueOf(JOptionPane.showInputDialog("j" + j + ": Cette cellule est deja utilise. autre Cordonnee X"));
                 y = Integer.valueOf(JOptionPane.showInputDialog("j" + j + ": Cette cellule est deja utilise. autre Cordonnee y"));
@@ -89,7 +89,7 @@ public class perso2 {
         }
     }
 
-    // test si le cellule est disponible
+    // test si la cellule est disponible
     public static boolean vide(int tab_cache[][],int x , int y ) {
         if (x < tab_cache.length
             && x > 0
@@ -100,7 +100,7 @@ public class perso2 {
     } else return false;
     }
 
-    // initialiser les valeurs de chaque cellule de tab_chache avec joueur 1 = 4 et joueur 2 = 5
+    // initialiser les valeurs de chaque cellules de tab_cache avec joueur 1 = 4 et joueur 2 = 5
     public static int valeur(int tab_cache[][], int x, int y, int j) {
         if (x == 1 && j == 1) tab_cache[x][y] = 4;
         else if (y == 1 && j == 2) tab_cache[x][y] = 5;
@@ -108,7 +108,7 @@ public class perso2 {
         return 0;
     }
 
-    //partie test le voisin
+    // partie test le voisin
     static boolean test4_5(int tab_cache[][], int t) {
         for (int i = 1; i < tab_cache.length; i++) {
             for (int j = 1; j < tab_cache.length; j++) {
@@ -154,7 +154,7 @@ public class perso2 {
         return false;
     }
 
-    //on affiche l'arene
+    // on affiche l'arene
     public static void affichage(int arene[][]) {
         for (int i = 0; i < arene.length; i++) {
             for (int j = 0; j < arene.length; j++) {
@@ -171,7 +171,7 @@ public class perso2 {
             System.out.println();
         }
     }
-    // je l'ai coupé sinon la méthode affichage va étre trés long et 
+    // je l'ai coupé sinon la méthode affichage va être très long  
     public static void bordGouche(int temp) {
         for (int i = 0; i < temp - 1; i++) {
             System.out.print(" ");
